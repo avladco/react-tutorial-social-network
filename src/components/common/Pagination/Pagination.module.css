@@ -1,0 +1,21 @@
+.selectedPage {
+    font-weight: bold;
+    color: red;
+    border: 1px solid #000;
+    border-radius: 5px;
+
+    padding-left: 3px;
+    cursor: pointer;
+}
+
+.otherPages {
+    color: gray;
+
+    padding-left: 3px;
+    cursor: pointer;
+}
+
+.otherPages:hover {
+    border: 1px solid gray;
+    border-radius: 5px;
+}

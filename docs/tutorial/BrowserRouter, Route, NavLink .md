@@ -24,12 +24,16 @@ import {BrowserRouter, Route} from "react-router-dom";
 		<Route path="/testPage" render={ () => <FunctiaComponenta /> }>
 	</BrowserRouter> 
 ```
-```
+```js
 import {NavLink} from "react-router-dom";
 	
 	<NavLink to="/test1"> Link </NavLink>
-	<NavLink .. activeClassName={cs.activ}>	</NavLink>
+	<NavLink to="/" activeClassName={cs.activ}> Link </NavLink>
                     
-              //Parametrul activeClassName functioneaza cand linkul este activ.
-	      //css: a.activ {color:blue;}	
+    //Parametrul activeClassName functioneaza cand linkul este activ.
+    //css: a.activ {color:blue;}	
+```
+```js
+import {Redirect} from "react-router-dom";
+<Redirect to="/login" />
 ```

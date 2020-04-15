@@ -1,8 +1,12 @@
 ## Create a Class Component
 When creating a React component, the component's name must start with an upper case letter.
 
-The component has to include the `extends React.Component` statement, this statement creates an inheritance to React.Component, and gives your component access to React.Component's functions.
-
+The component has to include the `extends React.Component` statement, this statement creates an inheritance to React.Component, 
+and gives your component access to React.Component's functions.
+   - state
+   - setState
+   - props
+   
 The component also requires a `render()` method, this method returns HTML.
 
 Example:
@@ -42,7 +46,19 @@ https://programmingwithmosh.com/javascript/react-lifecycle-methods/
 ---
 - render(){}
 - componentDidMount(){}
+  - Acest `method` se foloseste pentru a executa unele functii inainte de `render`-ul componentei.
+```js
+componentDidMount() {
+        this.props.getUser(userId); // va efectua fn inainte de render-ul componentei
+    }
+```  
 - componentDidUpdate(){}
+   - Acest `method` se foloseste pentru a executa unele functii pentru fiecare schimbare a componentei, gen `onChange`.
+```js
+componentDidUpdate(prevProps, prevState) {          // parametrii obligatorii
+        console.log(this.state)     // va efectua fn la fiecare schimbare din componenta.
+    }
+```
 - componentWillUnmount(){}
 - shouldComponentUpdate(){}
 - static getDerivedStateFromProps(){}

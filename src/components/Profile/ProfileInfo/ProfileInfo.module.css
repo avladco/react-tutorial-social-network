@@ -1,0 +1,20 @@
+.bgInfo {
+    position: relative;
+    padding-left: 20px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.bgImage {
+    width: 100%;
+    z-index: 1000;
+}
+
+.profilePhoto {
+    background-color: darkseagreen;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: -210px;
+    outline: 7px solid #fff;
+}

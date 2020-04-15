@@ -4,36 +4,33 @@ import {NavLink, Link} from "react-router-dom";
 
 
 const Navbar = () => {
-
     return (
     <nav className={`${cs.nav}`}>
-        <ul>
 
-          <li className={cs.item}>
-              <Link to="/profile">Profile</Link>
-          </li>
+          <div className={cs.item}>
+              <Link to={`/profile/`}>Profile</Link>
+          </div>
 
-          <li className={cs.item}>
+          <div className={cs.item}>
               <NavLink to="/dialogs">Messages</NavLink>
-          </li>
+          </div>
 
-          <li className={cs.item}>
+          <div className={cs.item}>
               <NavLink to="/users">Users</NavLink>
-          </li>
+          </div>
 
-          <li className={cs.item}>
-              <a href="">News</a>
-          </li>
+          <div className={cs.item}>
+              <a href="/news">News</a>
+          </div>
 
-          <li className={cs.item}>
-              <a href="">Music</a>
-          </li>
+          <div className={cs.item}>
+              <a href="/music">Music</a>
+          </div>
 
-          <li className={cs.item}>
-              <a href="">Settings</a>
-          </li>
+          <div className={cs.item}>
+              <a href="/settings">Settings</a>
+          </div>
 
-        </ul>
     </nav>
     )
 };

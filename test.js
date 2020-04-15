@@ -1,50 +1,34 @@
-
-
-function fn () {
-
+function f1() {
+    console.log(1);
+    throw "Invalid";
+    console.log(2);
 }
 
-class Root {
-    id = 1;
-    constructor() {
+function f3() {
+    console.log(4);
+    try {
+        f1();
     }
-}
-class Animal {
+    catch (e) {
+    console.log(e)
 
-}
-
-class Car {
-
-}
-
-class User extends Root {
-    name = "data";
-    age = 1;
-    constructor(name, age) {
-        super();
-        this.name = name;
-        this.age = age;
-        console.log("initialized")
     }
-
-    getName() {
-        return this.name
-    }
-    set age(age) {
-        this.age = age
-    }
-    get age() {
-        return this.age
-    }
+    console.log(5)
 }
 
-const s = new String("adasd");
+function f2() {
+    console.log(3)
+}
 
-// let daniel = new User("name", 18);
-// Data.equals()
-// d.name
-// d.age = 1
-// let a = d.age
-// d.getName()
-
-console.log(typeof Data)
+try {
+    f3();
+} catch (e) {
+    console.log(e)
+}
+f2();
+//for(let i = 0; i < myArray.length; i++)
+let pages = [];
+for (let i = 0; i < 10; i++) {
+    pages.push(i)
+}
+console.log(pages)

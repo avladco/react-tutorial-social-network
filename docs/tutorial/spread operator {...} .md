@@ -1,9 +1,19 @@
-## Spead operator `{...}` (Clone an object)
-Поверхностная копия, которую мы делаем с помощью оператора распространения - *spread operator* `...`, не совсем та копия, 
-которая, нам нужна. Так как мы с вами проповедуем функциональное программирование, нам нужно копировать объекты так, 
-чтобы внося изменения в копию, мы не затрагивали ихсодный объект 
-(так называемая неизменяемость - *immutablility*)
-
+## Spead operator `...` 
+Copiem elementele unui Array in alt Array.
+Ex:
+```js
+let array1 = [1, 2, 3];
+let array2 = [...array1, 4, 5, 6];
+//  array2 = [1, 2, 3, 4, 5, 6];
+```
+Folosim elementele unui Array ca parametrii unei functii.
+Ex:
+```js
+let array1 = [1, 2, 3];
+myFunc(...array1);
+// myFunc(1, 2, 3);
+```
+#### Deep Copy
 - Primitives are the simplest elements of a programming language. JavaScript currently has six primitive types: 
   - string, 
   - number, 

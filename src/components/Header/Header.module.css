@@ -1,9 +1,24 @@
 .header {
     grid-area: hd;
-    background-color: aquamarine;
+    background-color: darkseagreen;
   }
 
 .app_logo {
-    height: 60px;
-    pointer-events: none;
+    height: 80px;
     }
+
+.login{
+    float:right;
+    background-color: darkcyan;
+    padding: 10px;
+    margin: 20px;
+}
+.login:hover{
+    background-color: gray;
+}
+
+.login, .login a {
+    color: black;
+    font-family: "Comic Sans MS" ;
+    text-decoration: none;
+}

@@ -4,7 +4,7 @@
 
 .body {
     display: grid;
-    grid-template-columns: 5% 20% 40%;
+    grid-template-columns: 5% 20% 60%;
     grid-template-areas: ". img descr";
 }
 
@@ -16,6 +16,7 @@
 }
 
 .description {
+    min-width: 240px;
     grid-area: descr;
     border-radius: 5px;
     box-shadow: 3px 3px 5px darkgray;
@@ -45,7 +46,7 @@
     box-shadow: 1px 1px 3px darkgray;
 }
 .follow:hover {
-    background-color: hotpink;
+    background-color: darkcyan;
 }
 
 .red {
@@ -60,7 +61,7 @@
     float: right;
     font-size: 11px;
     font-weight: bold;
-    font-family: Verdana;
+    font-family: Verdana, serif;
     font-style: italic;
     color: gray;
 }
