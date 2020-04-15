@@ -1,0 +1,9 @@
+.header {
+    grid-area: hd;
+    background-color: aquamarine;
+  }
+
+.app_logo {
+    height: 60px;
+    pointer-events: none;
+    }

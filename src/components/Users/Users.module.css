@@ -1,0 +1,70 @@
+.users{
+    grid-area: ct;
+}
+
+.body {
+    display: grid;
+    grid-template-columns: 5% 20% 40%;
+    grid-template-areas: ". img descr";
+}
+
+.img {
+    grid-area: img;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.description {
+    grid-area: descr;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px darkgray;
+    margin: 10px 30px;
+    padding: 3px 7px;
+}
+
+.img img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50% ;
+    box-shadow: 3px 3px 8px gray;
+    margin: 3px;
+    transition: transform 0.8s ease-in-out;
+}
+
+.img img:hover {
+    transform:rotate(360deg);
+}
+
+.follow {
+    font-weight: 600;
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px darkgray;
+}
+.follow:hover {
+    background-color: hotpink;
+}
+
+.red {
+    background: darkgray;
+}
+
+.green {
+    background: darkseagreen;
+}
+
+.location {
+    float: right;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: Verdana;
+    font-style: italic;
+    color: gray;
+}
+
+.userName {
+    font-weight: 600;
+}

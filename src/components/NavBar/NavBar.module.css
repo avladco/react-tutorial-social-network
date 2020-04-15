@@ -1,0 +1,16 @@
+.nav {
+    grid-area: nv;
+    background-color: aquamarine;
+  }
+
+
+
+  .item a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+  }
+
+.item a.activeLink {
+    color: black;
+}
