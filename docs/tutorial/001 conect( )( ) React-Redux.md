@@ -12,7 +12,7 @@
   - `conect`-ul singur ia datele din store: state, dispatch..
   
  Exemplu:
-```flow js
+```jsx
  let stateProps = (state) => {              //State data
     return {
         a: state.page1,               
