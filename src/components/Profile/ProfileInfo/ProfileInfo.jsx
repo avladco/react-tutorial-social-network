@@ -1,58 +1,62 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Preloader from "../../common/Preloader/Preloader";
 import css from './ProfileInfo.module.css';
 import profileLogo from "../../../assets/img/user.webp";
 
-class ProfileInfoClass extends React.Component {
-    state = {
-        editMode: false,
-        status: this.props.status
+const ProfileInfo = (props) => {
+
+    let [editMode, setEditMode] = useState(false);
+    let [status, setStatus] = useState(props.status);
+
+    useEffect(() => {
+        setStatus(props.status)
+    }, [props.status]);   // useEffect will run only if [deps] will be changed.
+
+    const activateEditMode = () => {
+        setEditMode(true);                 // to input view
     };
 
-    onEditMode = () => {
-        this.setState({editMode: true});                // to input view
+    const deactivateEditMode = () => {
+        setEditMode(false);               // to string view
+        props.updateStatus(status);           // update global state
     };
 
-    offEditMode = () => {
-        this.setState({editMode: false});               // to string view
-        this.props.updateStatus(this.state.status);           // update global state
+    const onStatusChange = (e) => {                                 // update local state
+        setStatus(e.currentTarget.value)
     };
 
-    onStatusChange = (e) => {                                 // update local state
-        this.setState({status: e.currentTarget.value})
-    };
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.status !== this.props.status) {
-            this.setState({ status: this.props.status})
-        }
+    if (!props.profile) {
+        return <Preloader/>
     }
 
-    render() {
-        if (!this.props.profile) {
-            return <Preloader/>
-        }
-        return (
-            <>
-                <div className={css.bg}>
-                    <img className={css.bgImage} alt=''
-                         src='https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'/>
-                </div>
-                <div className={css.bgInfo}>
-                    <img src={this.props.profile.photos.large ? this.props.profile.photos.large : profileLogo} alt=''
-                         className={css.profilePhoto}/>
-                    <div>{this.props.profile.fullName}</div>
-                    <div>{this.props.profile.aboutMe}</div>
-                    <div>{
-                        !this.state.editMode
-                            ? <div><span onClick={this.onEditMode}>{this.props.status || "no status" }</span></div>
-                            : <div><input onBlur={this.offEditMode}
-                                          autoFocus={true}
-                                          value={this.state.status}
-                                          onChange={this.onStatusChange} /></div>
-                    }</div>
-                </div>
-            </>
-        )
-    }
-}
+    const selectMainPhoto = (e) => {
+        props.savePhoto(e.target.files[0]);
+    };
+
+    return (
+        <>
+            <div className={css.bg}>
+                <img className={css.bgImage} alt=''
+                     src='https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'/>
+            </div>
+            <div className={css.bgInfo}>
+                <img src={props.profile.photos.large || profileLogo} alt='' className={css.profilePhoto}/>
+                {props.profile.userId === props.loggedUserId ? <input type='file' onChange={selectMainPhoto} /> : null}
+
+                <div>{props.profile.fullName}</div>
+                <div>{props.profile.aboutMe}</div>
+
+                <div>{
+                    !editMode
+                        ? <div><span onClick={activateEditMode}>{props.status || "no status"}</span></div>
+                        : <div><input onBlur={deactivateEditMode}
+                                      autoFocus={true}
+                                      value={status}
+                                      onChange={onStatusChange}/></div>
+                }</div>
+            </div>
+        </>
+    )
+};
+
+export default ProfileInfo;

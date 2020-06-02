@@ -3,6 +3,7 @@ import {profileAPI, usersAPI} from "../api/api";
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const UPDATE_STATUS = 'UPDATE_STATUS';
+const SAVE_PHOTO = 'SAVE_PHOTO';
 
 let initialState = {
     profile: null,
@@ -37,6 +38,10 @@ const profileReducer = (state = initialState, action) => {
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
+
+        case SAVE_PHOTO: {
+            return {...state, profile: {...state.profile, photos: action.photos}}
+        }
         default:
             return state;
     }
@@ -45,15 +50,23 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = (message) => ({type: ADD_POST, message});
 const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 const setStatus = (status) => ({type: UPDATE_STATUS, status});
+const savePhotoSucces = (photos) => ({type: SAVE_PHOTO, photos});
 
 export const getUserProfile = (userId) => async (dispatch) => { // Thunk creator
     let response = await usersAPI.getProfile(userId);
-        dispatch(setUserProfile(response.data));            // Data from API json
+    dispatch(setUserProfile(response.data));            // Data from API json
 };
 
 export const getStatus = (userId) => async (dispatch) => {
     let response = await profileAPI.getStatus(userId);      // get status from server
-        dispatch(setStatus(response.data));                 // update local state
+    dispatch(setStatus(response.data));                 // update local state
+};
+
+export const savePhoto = (file) => async (dispatch) => {
+    let response = await profileAPI.savePhoto(file);      // get status from server
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSucces(response.data.data.photos));                        // update local state
+    }
 };
 
 export const updateStatus = (status) => async (dispatch) => {

@@ -43,6 +43,11 @@ export const profileAPI = {
     },
     updateStatus(status) {
         return instance.put(`profile/status/`, {status: status});   // 1param - URL, 2param - Object to put
+    },
+    savePhoto(photoFile) {
+        let formData = new FormData();
+        formData.append('image', photoFile);
+        return instance.put(`profile/photo`, formData);
     }
 };
 
