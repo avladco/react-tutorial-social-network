@@ -5,13 +5,17 @@ import {minLength, required} from "../../../utils/validators/validators";
 
 const minLength6 = minLength(6);
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     // handleSubmit - preia datele din <form> si le pune intr-un obiect
+
     return (
         <form onSubmit={handleSubmit}>
             {createField("email", "input", null, 'Login', [required])}
             {createField("password", "input", 'password', 'Password', [required, minLength6])}
             {createField("rememberMe", "input", 'checkbox', null, null, 'Remember me')}
+
+            {captchaUrl && <img src={captchaUrl} alt="captcha" />}
+            {captchaUrl && createField('captcha', 'input', null, 'symbols from image', [required])}
 
             {error && <div style={{color: 'red'}}>{error}</div>}
             <div>   <button> Login </button>   </div>

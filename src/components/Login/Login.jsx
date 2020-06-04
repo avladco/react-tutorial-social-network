@@ -6,20 +6,21 @@ import {Redirect} from "react-router-dom";
 
 const Login = (props) => {
     const onSubmit_ = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe);
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
     };
 
-    if(props.isAuth) {
+    if (props.isAuth) {
         return <Redirect to={'/profile'}/>
     }
 
     return <div>
         <h1>Login</h1>
-        <LoginFormRedux onSubmit={onSubmit_}/>
+        <LoginFormRedux onSubmit={onSubmit_} captchaUrl={props.captchaUrl}/>
     </div>
 };
 
 const mapDispatchToProps = (state) => ({
-isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl
 });
-export default connect(mapDispatchToProps, {login, logout}) (Login);
+export default connect(mapDispatchToProps, {login, logout})(Login);
